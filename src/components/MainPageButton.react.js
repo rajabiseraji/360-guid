@@ -10,7 +10,6 @@
 import React from 'react';
 import {
     StyleSheet,
-    Text,
     View,
     Image,
     VrButton,
@@ -108,9 +107,6 @@ class MainPageButton extends React.Component {
                             this.props.source
                         }
                         /> 
-                        <Text style = {styles.text}> 
-                            { this.props.text } 
-                        </Text> 
                     </Animated.View> 
                 </VrButton> 
             </View>
@@ -131,7 +127,6 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 5,
         flexDirection: 'row',
-        height: 60,
     },
     buttonFocused: {
         backgroundColor: 'white',
