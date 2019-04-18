@@ -15,7 +15,6 @@ import {
     Image,
     VrButton,
     Animated,
-    NativeModules,
 } from 'react-360';
 
 const FOCUS_SCALE = 1.3;
@@ -76,7 +75,7 @@ class MainPageButton extends React.Component {
                         width: this.props.width * FOCUS_SCALE
                     }
                 ]
-            } >
+            }>
                 <VrButton onClick = {
                     this._click
                 } //this event trigger when click the view
@@ -109,11 +108,9 @@ class MainPageButton extends React.Component {
                             this.props.source
                         }
                         /> 
-                        <Text style = {
-                            styles.text
-                        }> {
-                            this.props.text
-                        } </Text> 
+                        <Text style = {styles.text}> 
+                            { this.props.text } 
+                        </Text> 
                     </Animated.View> 
                 </VrButton> 
             </View>
