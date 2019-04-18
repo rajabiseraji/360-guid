@@ -13,17 +13,11 @@ import {
     Text,
     View,
     Image,
-    asset,
     VrButton,
     Animated,
     NativeModules,
 } from 'react-360';
 
-const {
-    AudioModule
-} = NativeModules;
-
-const CLICK_SOUND = asset('menu-click.wav');
 const FOCUS_SCALE = 1.3;
 
 class MainPageButton extends React.Component {
@@ -44,6 +38,9 @@ class MainPageButton extends React.Component {
 
     _focus = () => {
         // start an animation
+        console.log('====================================');
+        console.log('in');
+        console.log('====================================');
         Animated.timing(this.state.scaleAnim, {
             toValue: 1,
             duration: 300,
@@ -70,8 +67,8 @@ class MainPageButton extends React.Component {
     };
 
     render() {
-        return ( <
-            View style = {
+        return ( 
+            <View style = {
                 [
                     styles.wrapper,
                     this.props.style,
@@ -80,59 +77,45 @@ class MainPageButton extends React.Component {
                     }
                 ]
             } >
-            <
-            VrButton onClick = {
-                this._click
-            } //this event trigger when click the view
-            onExit = {
-                this._blur
-            } //this event trigger when cursor move out of the view
-            onEnter = {
-                this._focus
-            } //this event trigger when cursor move into of the view
-            onClickSound = {
-                CLICK_SOUND
-            }
-            onEnterSound = {
-                CLICK_SOUND
-            }
-            onExitSound = {
-                CLICK_SOUND
-            }
-            onLongClickSound = {
-                CLICK_SOUND
-            } >
-            <
-            Animated.View style = {
-                [
-                    styles.button,
-                    this.state.hasFocus && styles.buttonFocused,
-                    {
-                        // With this the width of the this view
-                        // is animated with the value of scaleAnim
-                        // by an interpolation
-                        width: this.state.scaleAnim.interpolate({
-                            inputRange: [0, 1],
-                            outputRange: [this.props.width, this.props.width * FOCUS_SCALE],
-                        }),
-                    }
-                ]
-            } >
-            <
-            Image style = {
-                styles.icon
-            }
-            source = {
-                this.props.source
-            }
-            /> <
-            Text style = {
-                styles.text
-            } > {
-                this.props.text
-            } </Text> 
-            </Animated.View> 
-            </VrButton> 
+                <VrButton onClick = {
+                    this._click
+                } //this event trigger when click the view
+                onExit = {
+                    this._blur
+                } //this event trigger when cursor move out of the view
+                onEnter = {
+                    this._focus
+                } //this event trigger when cursor move into of the view
+                >
+                    <Animated.View style = {
+                        [
+                            styles.button,
+                            this.state.hasFocus && styles.buttonFocused,
+                            {
+                                // With this the width of the this view
+                                // is animated with the value of scaleAnim
+                                // by an interpolation
+                                width: this.state.scaleAnim.interpolate({
+                                    inputRange: [0, 1],
+                                    outputRange: [this.props.width, this.props.width * FOCUS_SCALE],
+                                }),
+                            }
+                        ]
+                    } >
+                        <Image style = {
+                            styles.icon
+                        }
+                        source = {
+                            this.props.source
+                        }
+                        /> 
+                        <Text style = {
+                            styles.text
+                        }> {
+                            this.props.text
+                        } </Text> 
+                    </Animated.View> 
+                </VrButton> 
             </View>
         );
     }
