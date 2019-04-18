@@ -17,7 +17,7 @@ function init(bundle, parent, options = {}) {
   );
 
   // Load the initial environment
-  r360.compositor.setBackground(r360.getAssetURL('first.jpg'));
+  r360.compositor.setBackground(r360.getAssetURL('main.jpg'));
 }
 
 window.React360 = {init};
