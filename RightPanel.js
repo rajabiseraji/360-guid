@@ -1,10 +1,8 @@
 import React from 'react';
 import {
-    Image,
     StyleSheet,
-    Text,
     View,
-    VrButton
+    asset
 } from 'react-360';
 
 import MainPageButton from 'MainPageButton.react';
