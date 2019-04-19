@@ -27,8 +27,7 @@ export default class RearPanel extends React.Component {
         return ( <View style = {
                 styles.panel
             } >
-            <
-            MainPageButton style = {
+            <MainPageButton style = {
                 styles.button
             }
             source = {
@@ -39,7 +38,8 @@ export default class RearPanel extends React.Component {
                     this._onClick(1);
                 }
             }
-            />  </View>
+            />  
+            </View>
         );
     }
 };
@@ -49,12 +49,12 @@ const styles = StyleSheet.create({
     panel: {
         width: 400,
         height: 300,
-        backgroundColor: 'red',
+        backgroundColor: 'transparent',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
         transform: [{
-            translate: [0, 0, -4]
+            translate: [0, 0, -2]
         }]
     }
 });

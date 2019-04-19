@@ -50,12 +50,12 @@ const styles = StyleSheet.create({
     panel: {
         width: 400,
         height: 300,
-        backgroundColor: 'red',
+        backgroundColor: 'transparent',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
         transform: [{
-            translate: [0, 0, -4]
+            translate: [0, 0, -2]
         }]
     }
 });

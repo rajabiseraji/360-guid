@@ -5,12 +5,10 @@ import {
 import ForwardPanel from './ForwardPanel';
 import RightPanel from './RightPanel';
 import RearPanel from './RearPanel';
-import LeftPanel from './LeftPanel';
 
 AppRegistry.registerComponent('ForwardPanel', () => ForwardPanel);
 AppRegistry.registerComponent('RightPanel', () => RightPanel);
 AppRegistry.registerComponent('RearPanel', () => RearPanel);
-AppRegistry.registerComponent('LeftPanel', () => LeftPanel);
 
 // import MainPageButton from 'MainPageButton.react';
 
