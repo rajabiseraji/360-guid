@@ -60,15 +60,8 @@ export default class Hello360 extends React.Component {
           styles.panel
         } >
           <MainPageButton
-            style = {
-              styles.button
-            }
-            source = {
-              adventureImage
-            }
-            text = {
-              `Scene `
-            }
+            style = {styles.button}
+            source = {adventureImage}
             onClick = {
                 () => {
                   this._onClick(1);
@@ -85,7 +78,7 @@ const styles = StyleSheet.create({
   panel: {
     width: 500,
     height: 300,
-    backgroundColor: 'transparent',
+    backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
