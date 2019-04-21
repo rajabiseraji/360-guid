@@ -3,7 +3,7 @@
  * Do the "providesModule" provides module name to haste map
  * So you can reference it from other file by
  * import MainPageButton from "MainPageButton.react"
- * @providesModule MainPageButton.react
+ * @providesModule MiscButton.react
  */
 'use strict';
 
