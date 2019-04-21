@@ -9,10 +9,12 @@ import {
 } from "react-router-native";
 
 import MainPageButton from 'MainPageButton.react';
+import MiscButton from 'MiscButton.react';
 
 const adventureImage = asset('adventure.png');
 const historicalImage = asset('historical.png');
 const naturalImage = asset('natural.png');
+const questionIcon = asset('help.png');
 
 const buttonImages = [adventureImage, historicalImage, naturalImage];
 
@@ -22,70 +24,87 @@ export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      index: 0
+      showHelp: false
     };
   }
   
-  _onClick = (index) => {
+  _onClick = () => {
     this.setState({
-      index: index
+      showHelp: !this.state.showHelp
     });
   };
 
+  _renderHelp = () => {
+      return (
+        <View style={
+            [
+                styles.helpPanel,
+                {
+                    justifyContent: 'center',
+                }
+            ]
+        }>
+            <Image 
+                source = {
+                    asset('mainHelp.png')
+                }
+            />  
+        </View>
+      )
+  }
+
   render() {
-    // const sceneButtons = [];
-    // for (const i = 0; i < scene_count; i++) {
-    //   sceneButtons.push( 
-    //     <MainPageButton 
-    //       key = {i}
-    //       ref = {i}
-    //       style = {
-    //           styles.button
-    //         }
-    //         source = {
-    //           buttonImages[i]
-    //         }
-    //         text = {
-    //           `Scene ${i}`
-    //         }
-    //         onClick = {
-    //           () => {
-    //             this._onClick(i);
-    //           }
-    //       }
-    //     />)
-    //   }
       return ( 
         <View style = {
           styles.panel
         } >
-            <MainPageButton
-                style = {styles.button}
-                source = {naturalImage}
-                onClick = {
-                    () => {
-                        this.props.history.push('/natural');    
+            {
+                this.state.showHelp ? 
+                <View style = {[styles.panel, {height: 350}]}>
+                    <MainPageButton
+                        style = {styles.button}
+                        source = {naturalImage}
+                        onClick = {
+                            () => {
+                                this.props.history.push('/natural');    
+                            }
+                        } 
+                    />
+                    <MainPageButton
+                        style = {styles.button}
+                        source = {historicalImage}
+                        onClick = {
+                            () => {
+                                this.props.history.push('/historical');    
+                            }
+                        } 
+                    />
+                    <MainPageButton
+                        style = {styles.button}
+                        source = {adventureImage}
+                        onClick = {
+                            () => {
+                                this.props.history.push('/adventure');    
+                            }
+                        } 
+                    />
+                </View>
+                : renderHelp()
+            }
+            <View style = {[styles.panel, {height: 50, justifyContent: 'flex-start'}]}>
+                <MiscButton
+                    style = {styles.miscButton}
+                    source = {questionIcon}
+                    onClick = {this._onClick}
+                >
+                </MiscButton>
+                <Image
+                    style={styles.confused} 
+                    source = {
+                        asset('confused.png')
                     }
-                } 
-            />
-            <MainPageButton
-                style = {styles.button}
-                source = {historicalImage}
-                onClick = {
-                    () => {
-                        this.props.history.push('/historical');    
-                    }
-                } 
-            />
-            <MainPageButton
-                style = {styles.button}
-                source = {adventureImage}
-                onClick = {
-                    () => {
-                        this.props.history.push('/adventure');    
-                    }
-                } 
-            />
+                /> 
+            </View>
         </View>
       );
     }
@@ -109,5 +128,8 @@ const styles = StyleSheet.create({
   button: {
       marginRight: 100,
       marginLeft: 100
+  },
+  confused: {
+      backgroundColor: 'blue'
   }
 });
