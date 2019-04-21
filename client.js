@@ -10,34 +10,40 @@ function init(bundle, parent, options = {}) {
     ...options,
   });
 
-  const forwardPanel = new Surface(1000, 600, Surface.SurfaceShape.Flat);
-  forwardPanel.setAngle(0, 0);
-  const rightPanel = new Surface(1000, 600, Surface.SurfaceShape.Flat);
-  rightPanel.setAngle(Math.PI / 2, 0);
-  // const leftPanel = new Surface(1000, 600, Surface.SurfaceShape.Flat);
-  // leftPanel.setAngle(Math.PI, 0);
-  const rearPanel = new Surface(1000, 600, Surface.SurfaceShape.Flat);
-  rearPanel.setAngle(Math.PI, 0);
+  // const forwardPanel = new Surface(1000, 600, Surface.SurfaceShape.Flat);
+  // forwardPanel.setAngle(0, 0);
+  // const rightPanel = new Surface(1000, 600, Surface.SurfaceShape.Flat);
+  // rightPanel.setAngle(Math.PI / 2, 0);
+  // // const leftPanel = new Surface(1000, 600, Surface.SurfaceShape.Flat);
+  // // leftPanel.setAngle(Math.PI, 0);
+  // const rearPanel = new Surface(1000, 600, Surface.SurfaceShape.Flat);
+  // rearPanel.setAngle(Math.PI, 0);
 
 
-  r360.renderToSurface(
-    r360.createRoot('RightPanel'),
-    rightPanel,
-  );
-  r360.renderToSurface(
-    r360.createRoot('ForwardPanel'),
-    forwardPanel,
-  );
-  r360.renderToSurface(
-    r360.createRoot('RearPanel'),
-    rearPanel,
-  );
+  // r360.renderToSurface(
+  //   r360.createRoot('RightPanel'),
+  //   rightPanel,
+  // );
+  // r360.renderToSurface(
+  //   r360.createRoot('ForwardPanel'),
+  //   forwardPanel,
+  // );
+  // r360.renderToSurface(
+  //   r360.createRoot('RearPanel'),
+  //   rearPanel,
+  // );
   // r360.renderToSurface(
   //   r360.createRoot('LeftPanel'),
   //   leftPanel,
   // );
 
+  const mainSurface = new Surface(4096, 1000, Surface.SurfaceShape.Cylinder);
+
   // Load the initial environment
+  r360.renderToSurface(
+    r360.createRoot('Hello360'),
+    mainSurface
+  );
   r360.compositor.setBackground(r360.getAssetURL('main.jpg'));
 }
 
