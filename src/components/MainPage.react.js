@@ -67,7 +67,25 @@ export default class MainPage extends React.Component {
                         this.props.history.push('/natural');    
                     }
                 } 
-                />
+            />
+            <MainPageButton
+                style = {styles.button}
+                source = {historicalImage}
+                onClick = {
+                    () => {
+                        this.props.history.push('/historical');    
+                    }
+                } 
+            />
+            <MainPageButton
+                style = {styles.button}
+                source = {adventureImage}
+                onClick = {
+                    () => {
+                        this.props.history.push('/adventure');    
+                    }
+                } 
+            />
         </View>
       );
     }
@@ -76,14 +94,20 @@ export default class MainPage extends React.Component {
 // defining StyleSheet
 const styles = StyleSheet.create({
   panel: {
-    width: 400,
-    height: 300,
+    flex: 1,
+    flexDirection: 'row',
+    width: 4096,
+    height: 400,
     backgroundColor: 'red',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     padding: 20,
     transform: [
-      {translate: [0, 0, -4]}
+      {translate: [0, -100, -4]}
     ]
+  },
+  button: {
+      marginRight: 100,
+      marginLeft: 100
   }
 });
