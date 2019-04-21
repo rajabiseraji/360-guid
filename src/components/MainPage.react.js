@@ -2,7 +2,8 @@ import React from 'react';
 import {
     StyleSheet,
     View,
-    asset
+    asset,
+    Image
 } from 'react-360';
 import {
   Link
@@ -56,11 +57,17 @@ export default class MainPage extends React.Component {
   render() {
       return ( 
         <View style = {
-          styles.panel
+            [
+                styles.panel,
+                {
+                    flexDirection: !this.state.showHelp ? 'column' : 'row'
+                }
+
+            ]
         } >
             {
-                this.state.showHelp ? 
-                <View style = {[styles.panel, {height: 350}]}>
+                !this.state.showHelp ? 
+                <View style = {styles.mainPanel}>
                     <MainPageButton
                         style = {styles.button}
                         source = {naturalImage}
@@ -89,21 +96,23 @@ export default class MainPage extends React.Component {
                         } 
                     />
                 </View>
-                : renderHelp()
+                : this._renderHelp()
             }
-            <View style = {[styles.panel, {height: 50, justifyContent: 'flex-start'}]}>
-                <MiscButton
-                    style = {styles.miscButton}
-                    source = {questionIcon}
-                    onClick = {this._onClick}
-                >
-                </MiscButton>
+            <View style = {
+                styles.miscPanel
+            }>
                 <Image
                     style={styles.confused} 
                     source = {
                         asset('confused.png')
                     }
                 /> 
+                <MiscButton
+                    style = {styles.miscButton}
+                    source = {questionIcon}
+                    onClick = {this._onClick}
+                >
+                </MiscButton>
             </View>
         </View>
       );
@@ -116,7 +125,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     width: 4096,
-    height: 400,
+    height: 600,
     backgroundColor: 'red',
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -125,11 +134,37 @@ const styles = StyleSheet.create({
       {translate: [0, -100, -4]}
     ]
   },
+  mainPanel: {
+    flexDirection: 'row',
+    width: 4096,
+    height: 300,
+    backgroundColor: 'green',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    padding: 20,
+  },
+  miscPanel: {
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      position: 'absolute',
+      right: 0,
+      left: 0,
+      bottom: 0,
+      height: 100
+  },
+  noTransform: {
+    transform: [
+      {translate: [0, 0, 0]}
+    ]
+  },
   button: {
       marginRight: 100,
       marginLeft: 100
   },
   confused: {
-      backgroundColor: 'blue'
+      height: '100%',
+      aspectRatio: 2.14,
+      marginLeft: 50,
+      marginRight: 50
   }
 });

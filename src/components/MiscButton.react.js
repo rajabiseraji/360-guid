@@ -79,7 +79,6 @@ class MainPageButton extends React.Component {
                     <View style = {
                         [
                             styles.button,
-                            this.state.hasFocus && styles.buttonFocused,
                             {
                                 // With this the width of the this view
                                 // is animated with the value of scaleAnim
@@ -108,11 +107,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     button: {
-        backgroundColor: 'grey',
+        backgroundColor: 'transparent',
         justifyContent: 'center',
         alignItems: 'center',
-        borderColor: '#639dda',
-        borderWidth: 2,
+        borderWidth: 0,
         borderRadius: 5,
         flexDirection: 'row',
     },
