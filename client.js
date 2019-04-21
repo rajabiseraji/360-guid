@@ -41,7 +41,7 @@ function init(bundle, parent, options = {}) {
 
   // Load the initial environment
   r360.renderToSurface(
-    r360.createRoot('Hello360'),
+    r360.createRoot('App'),
     mainSurface
   );
   r360.compositor.setBackground(r360.getAssetURL('main.jpg'));
