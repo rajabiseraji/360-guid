@@ -5,6 +5,12 @@ import {
   View,
   asset
 } from 'react-360';
+
+import {
+  NativeRouter,
+  Route,
+  Link
+} from "react-router-native";
 // import ForwardPanel from './ForwardPanel';
 // import RightPanel from './RightPanel';
 // import RearPanel from './RearPanel';
