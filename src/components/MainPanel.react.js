@@ -1,3 +1,12 @@
+/**
+ * A simple component to use
+ * Do the "providesModule" provides module name to haste map
+ * So you can reference it from other file by
+ * import MainPageButton from "MainPageButton.react"
+ * @providesModule MainPanel.react
+ */
+'use strict';
+
 import React from 'react';
 import {
     StyleSheet,
@@ -7,12 +16,13 @@ import {
 } from 'react-360';
 
 import MiscButton from 'MiscButton.react';
+import MainPageButton from 'MainPageButton.react';
 
 const questionIcon = asset('help.png');
 const homeIcon = asset('home.png');
 const backIcon = asset('back.png');
 
-export default class MainPage extends React.Component {
+export default class MainPanel extends React.Component {
     static defaultProps = {
         isHomePage: false,  
         images: []
@@ -59,7 +69,7 @@ export default class MainPage extends React.Component {
         return (
             <View style = {styles.mainPanel}>
                 {
-                    this.props.images.map((image) => {
+                    this.props.images.map((image) => 
                         (<MainPageButton
                             style = {styles.button}
                             source = {image.src}
@@ -69,14 +79,14 @@ export default class MainPage extends React.Component {
                                 }
                             } 
                         />)
-                    })
+                    )
                 }
                 {
                     !this.props.isHomePage ? 
                     <MiscButton
                         style = {styles.backButton}
                         source = {backIcon}
-                        onClick = {this.props.history.go(-1)}
+                        onClick = { () => {this.props.history.go(-1)}}
                     /> : null
                 }
             </View>
@@ -112,11 +122,14 @@ export default class MainPage extends React.Component {
                     source = {questionIcon}
                     onClick = {this._onClick}
                 />
-                <MiscButton
-                    style = {styles.miscButton}
-                    source = {homeIcon}
-                    onClick = {this.props.history.push('/')}
-                />
+                {
+                    !this.props.isHomePage ? 
+                    <MiscButton
+                        style = {styles.miscButton}
+                        source = {homeIcon}
+                        onClick = {() => {this.props.history.push('/')}}
+                    /> : null
+                }
             </View>
         </View>
       );
