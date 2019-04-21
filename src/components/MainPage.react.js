@@ -5,9 +5,6 @@ import {
     asset,
     Image
 } from 'react-360';
-import {
-  Link
-} from "react-router-native";
 
 import MainPageButton from 'MainPageButton.react';
 import MiscButton from 'MiscButton.react';
@@ -16,11 +13,6 @@ const adventureImage = asset('adventure.png');
 const historicalImage = asset('historical.png');
 const naturalImage = asset('natural.png');
 const questionIcon = asset('help.png');
-
-const buttonImages = [adventureImage, historicalImage, naturalImage];
-
-const scene_count = 3;
-
 export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
