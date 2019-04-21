@@ -4,6 +4,9 @@ import {
     View,
     asset
 } from 'react-360';
+import {
+  Link
+} from "react-router-native";
 
 import MainPageButton from 'MainPageButton.react';
 
@@ -15,7 +18,7 @@ const buttonImages = [adventureImage, historicalImage, naturalImage];
 
 const scene_count = 3;
 
-export default class Hello360 extends React.Component {
+export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,15 +59,17 @@ export default class Hello360 extends React.Component {
         <View style = {
           styles.panel
         } >
-          <MainPageButton
-            style = {styles.button}
-            source = {adventureImage}
-            onClick = {
-                () => {
-                  this._onClick(1);
-                }
-              } 
-            />
+            <Link to="/natural">
+                <MainPageButton
+                    style = {styles.button}
+                    source = {naturalImage}
+                    onClick = {
+                        () => {
+                        this._onClick(1);
+                        }
+                    } 
+                    />
+            </Link>
         </View>
       );
     }
