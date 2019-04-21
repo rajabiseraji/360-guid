@@ -59,17 +59,15 @@ export default class MainPage extends React.Component {
         <View style = {
           styles.panel
         } >
-            <Link to="/natural">
-                <MainPageButton
-                    style = {styles.button}
-                    source = {naturalImage}
-                    onClick = {
-                        () => {
-                        this._onClick(1);
-                        }
-                    } 
-                    />
-            </Link>
+            <MainPageButton
+                style = {styles.button}
+                source = {naturalImage}
+                onClick = {
+                    () => {
+                        this.props.history.push('/natural');    
+                    }
+                } 
+                />
         </View>
       );
     }
