@@ -8,7 +8,7 @@ import {
 
 // import MainPageButton from 'MainPageButton.react';
 
-export default class HistoricalPage extends React.Component {
+export default class NaturalPage extends React.Component {
   constructor(props) {
     super(props);
     Environment.setBackgroundImage(asset('naturalbg.jpg'));
