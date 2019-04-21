@@ -39,13 +39,19 @@ export default class MainPage extends React.Component {
       return (
         <View style={
             [
-                styles.helpPanel,
+                styles.mainPanel,
                 {
-                    justifyContent: 'center',
+                    justifyContent: 'flex-end',
+                    marginRight: 300,
+                    height: 500,
+                    transform: [{
+                        translate: [0, 0, -400]
+                    }]
                 }
             ]
         }>
             <Image 
+                style = {styles.helpText}
                 source = {
                     asset('mainHelp.png')
                 }
@@ -161,10 +167,14 @@ const styles = StyleSheet.create({
       marginRight: 100,
       marginLeft: 100
   },
+  helpText: {
+    height: '100%',
+    aspectRatio: 1.66,
+  },
   confused: {
       height: '100%',
       aspectRatio: 2.14,
       marginLeft: 50,
-      marginRight: 50
+      marginRight: 10
   }
 });
