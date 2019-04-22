@@ -17,6 +17,8 @@ import {
 
 import MiscButton from 'MiscButton.react';
 import MainPageButton from 'MainPageButton.react';
+import ModeSelector from 'ModeSelector.react';
+
 
 const questionIcon = asset('help.png');
 const homeIcon = asset('home.png');
@@ -47,6 +49,38 @@ export default class MainPanel extends React.Component {
       showSetting: !this.state.showSetting
     });
   };
+
+  _renderModeSelector = () => {
+      if(this.state.showSetting) {
+          return (
+              <View style={
+                [
+                    styles.mainPanel,
+                    {
+                        justifyContent: 'flex-start',
+                        marginleft: 300,
+                        height: 500,
+                        transform: [{
+                            translate: [0, 0, -400]
+                        }]
+                    }
+                ]
+            }>
+                <ModeSelector 
+                    onChangeMode={(newMode) => {
+                            this.setState({showSetting: false});
+                            this.props.onChangeMode(newMode);
+                    }}
+                    onClose = {() => {
+                        this.setState({
+                            showSetting: false
+                        });
+                    }}
+                />
+            </View>
+          )
+      }
+  }
 
   _renderHelp = () => {
       return (
