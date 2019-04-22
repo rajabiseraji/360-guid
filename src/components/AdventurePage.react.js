@@ -3,7 +3,7 @@ import { asset, Environment } from 'react-360';
 
 import MainPanel from 'MainPanel.react';
 
-export default class MainPage extends React.Component {
+export default class AdventurePage extends React.Component {
   constructor(props) {
     super(props);
     Environment.setBackgroundImage(asset('adventurebg.jpg'));
