@@ -50,6 +50,13 @@ export default class MainPanel extends React.Component {
     });
   };
 
+  _changeModeHandler = (newMode) => {
+      this.setState({
+        showSetting: false
+      });
+      this.props.onChangeMode(newMode);
+  }
+
   _renderModeSelector = () => {
       if(this.state.showSetting) {
           return (
@@ -60,6 +67,7 @@ export default class MainPanel extends React.Component {
                         justifyContent: 'flex-start',
                         marginLeft: 300,
                         height: 500,
+                        width: 800,
                         zIndex: 10,
                         position: 'absolute',
                         transform: [{
@@ -69,15 +77,14 @@ export default class MainPanel extends React.Component {
                 ]
             }>
                 <ModeSelector 
-                    onChangeMode={(newMode) => {
-                            this.setState({showSetting: false});
-                            this.props.onChangeMode(newMode);
-                    }}
+                    onChangeMode={this._changeModeHandler}
                     onClose = {() => {
                         this.setState({
                             showSetting: false
                         });
                     }}
+                    weather={this.props.weather}
+                    timeOfDay={this.props.timeOfDay}
                 />
             </View>
           )

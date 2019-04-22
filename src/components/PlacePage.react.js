@@ -14,13 +14,17 @@ export default class PlacePage extends React.Component {
     }
   }
 
-  _changeMode(newMode) {
+  _changeMode = (newMode) => {
     this.setState({
       timeOfDay: newMode.timeOfDay, 
       weather: newMode.weather
     });
-    const newWeatherString = newWeather !== 'sunny' ? `_${newWeather}` : '';
-    Environment.setBackgroundImage(asset(`/${category}/${name}/${newTimeOfDay}${newWeatherString}.jpg`))
+    const {
+      name,
+      category
+    } = this.props.match.params;
+    const newWeatherString = newMode.weather.key !== 'clear' ? `_${newMode.weather.key}` : '';
+    Environment.setBackgroundImage(asset(`/${category}/${name}/${newMode.timeOfDay.key}${newWeatherString}.jpg`))
   }
   
   render() {
@@ -31,6 +35,8 @@ export default class PlacePage extends React.Component {
             images={[]}
             history={this.props.history}
             onChangeMode={this._changeMode}
+            timeOfDay={this.state.timeOfDay}
+            weather={this.state.weather}
         />
     )
   };

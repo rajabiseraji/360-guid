@@ -17,49 +17,55 @@ const backIcon = asset('back.png');
 export default class ModeSelector extends React.Component {
     static defaultProps = {
         onChangeMode: () => {},
-        weather: 'sunny',
-        timeOfDay: 'day'
+        weather: {},
+        timeOfDay: {}
     }
 
     constructor(props) {
         super(props);
-        this.state = {
-            weather: 'sunny',
-            timeOfDay: 'day',
-            timeOfDayOptions: [
+        const timeOfDayOptions = [
                 {
                     isActive: true,
                     imgSrc: asset('/mode/sun.png'),
-                    text: 'Day Time'
+                    text: 'Day Time',
+                    key: 'day'
                 },
                 {
                     isActive: false,
                     imgSrc: asset('/mode/moon.png'),
-                    text: 'Night Time'
-                },
-            ],
-            weatherOptions: [
-                {
-                    isActive: true,
-                    imgSrc: asset('/mode/sun.png'),
-                    text: 'Clear'
-                },
-                {
-                    isActive: false,
-                    imgSrc: asset('/mode/snow.png'),
-                    text: 'Snowy'
-                },
-                {
-                    isActive: false,
-                    imgSrc: asset('/mode/rain.png'),
-                    text: 'Rainy'
-                },
-            ]
+                    text: 'Night Time',
+                    key: 'night'
+                }
+        ];
+        const weatherOptions = [{
+                isActive: true,
+                imgSrc: asset('/mode/sun.png'),
+                text: 'Clear',
+                key: 'clear'
+            },
+            {
+                isActive: false,
+                imgSrc: asset('/mode/snow.png'),
+                text: 'Snowy',
+                key: 'snow'
+            },
+            {
+                isActive: false,
+                imgSrc: asset('/mode/rain.png'),
+                text: 'Rainy',
+                key: 'rain'
+            },
+        ];
+        this.state = {
+            timeOfDayOptions,
+            weatherOptions,
+            weather: props.weather || weatherOptions[0],
+            timeOfDay: props.timeOfDay || timeOfDayOptions[0],
         }
     }
 
-    _onWeatherChange(newWeatherIndex) {
-        let newWeatherOptions = Object.assign({}, this.state.weatherOptions);
+    _onWeatherChange = (newWeatherIndex) => {
+        let newWeatherOptions = Object.assign([], this.state.weatherOptions);
         newWeatherOptions = newWeatherOptions.map((option, index) => ({...option, isActive: newWeatherIndex === index}));
         this.setState({
             weather: this.state.weatherOptions[newWeatherIndex],
@@ -67,8 +73,8 @@ export default class ModeSelector extends React.Component {
         })
     }
 
-    _onTimeOfDayChange(newTimeOfDayIndex) {
-        let newTimeOfDayOptions = Object.assign({}, this.state.timeOfDayOptions);
+    _onTimeOfDayChange = (newTimeOfDayIndex) => {
+        let newTimeOfDayOptions = Object.assign([], this.state.timeOfDayOptions);
         newTimeOfDayOptions = newTimeOfDayOptions.map((option, index) => ({...option, isActive: newTimeOfDayIndex === index}));
         this.setState({
             timeOfDay: this.state.timeOfDayOptions[newTimeOfDayIndex],
@@ -76,7 +82,7 @@ export default class ModeSelector extends React.Component {
         })
     }
 
-    _onApplySettings() {
+    _onApplySettings = () => {
         this.props.onChangeMode({
             weather: this.state.weather,
             timeOfDay: this.state.timeOfDay
@@ -95,7 +101,7 @@ export default class ModeSelector extends React.Component {
                     />
                 </View>
                 <View style={styles.timeRow}>
-                    <Text style={styles.title}>Time</Text>
+                    <Text style={styles.title}>Weather</Text>
                     <ButtonGroup 
                         options={this.state.weatherOptions}
                         onOptionChange={this._onWeatherChange}
@@ -140,18 +146,30 @@ const styles = StyleSheet.create({
         flex: 1, 
         flexDirection: 'row',
         justifyContent: 'space-around',
+        alignItems: 'center',
         marginBottom: 10
     },
     backButton: {
-        height: 150,
+        position: 'absolute',
+        height: 50,
         left: 0,
     },
     applyButton: {
         backgroundColor: '#8ee3b2',
+        padding: 6,
         borderRadius: 5,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     buttonText: {
-        textAlign: 'center'
+        textAlign: 'center',
+        color: '#363636',
+        fontSize: 20
+    },
+    lastRow: {
+        flex: 1,
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })

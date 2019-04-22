@@ -21,7 +21,7 @@ export default class ButtonGroup extends React.Component {
     }
 
     render() {
-        const buttons = this.props.options.map((option, index) => {
+        const buttons = this.props.options.map((option, index) => (
             <VrButton
                 key={option.text + '-' + option.index}
                 onClick={() => this._optionChanged(index)}
@@ -35,7 +35,7 @@ export default class ButtonGroup extends React.Component {
                     source={option.imgSrc} />
                 <Text style={styles.buttonText}>{option.text}</Text>
             </VrButton>
-        });
+        ));
         return (
             <View style={styles.wrapper}>
                 {buttons}
@@ -51,15 +51,16 @@ const styles = StyleSheet.create({
         height: 120,
         padding: 10,
         width: '100%',
-        justifyContent: 'space-between'
+        justifyContent: 'center'
     }, 
     button: {
         backgroundColor: 'rgb(108,108,108)',
         borderRadius: 5,
-        flex: 1, 
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
+        marginRight: 10,
+        marginLeft: 10,
         height: 100,
         width: 100,
         padding: 10
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(75, 98, 151)'
     },
     iconImage: {
-        height: '80%',
+        height: 100,
         flex: 10
     },
     buttonText: {
