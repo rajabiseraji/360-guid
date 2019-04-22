@@ -1,9 +1,19 @@
+/**
+ * A simple component to use
+ * Do the "providesModule" provides module name to haste map
+ * So you can reference it from other file by
+ * import MainPageButton from "MainPageButton.react"
+ * @providesModule ModeSelector.react
+ */
+'use strict';
+
 import React from 'react';
 import { View, Text, StyleSheet, Image, asset } from 'react-360';
 
 import ButtonGroup from 'ButtonGroup.react';
 import MiscButton from 'MiscButton.react';
 
+const backIcon = asset('back.png');
 export default class ModeSelector extends React.Component {
     static defaultProps = {
         onChangeMode: () => {},
@@ -91,6 +101,21 @@ export default class ModeSelector extends React.Component {
                         onOptionChange={this._onWeatherChange}
                     />
                 </View>
+                <View style={styles.lastRow}>
+                    <MiscButton
+                        style = {styles.backButton}
+                        source = {backIcon}
+                        onClick = { () => {this.props.onClose()}}
+                    />
+                    <VrButton
+                        onClick={() => this._onApplySettings()}
+                        style={
+                            styles.applyButton
+                        }
+                    >
+                        <Text style={styles.buttonText}>Apply</Text>
+                    </VrButton>
+                </View>
             </View>
         )
     }
@@ -117,5 +142,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginBottom: 10
+    },
+    backButton: {
+        height: 150,
+        left: 0,
+    },
+    applyButton: {
+        backgroundColor: '#8ee3b2',
+        borderRadius: 5,
+        textAlign: 'center'
     }
 })
