@@ -1,3 +1,12 @@
+/**
+ * A simple component to use
+ * Do the "providesModule" provides module name to haste map
+ * So you can reference it from other file by
+ * import MainPageButton from "MainPageButton.react"
+ * @providesModule ButtonGroup.react
+ */
+'use strict';
+
 import React from 'react';
 import { StyleSheet, VrButton, Image, Text } from 'react-360';
 
