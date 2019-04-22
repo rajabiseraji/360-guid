@@ -1,44 +1,38 @@
 import React from 'react';
-import {
-  Environment,
-  StyleSheet,
-  View,
-  asset
-} from 'react-360';
+import { asset, Environment } from 'react-360';
 
-// import MainPageButton from 'MainPageButton.react';
+import MainPanel from 'MainPanel.react';
 
+const amazon = asset('/natural/amazon/card.png');
+const hawaii = asset('/natural/hawaii/card.png');
+const rakaposhi = asset('/natural/rakaposhi/card.png');
 export default class NaturalPage extends React.Component {
   constructor(props) {
     super(props);
     Environment.setBackgroundImage(asset('naturalbg.jpg'));
     this.state = {
-      index: 0
+      images: [
+        {
+          src: amazon,
+          routeUrl: '/place/natural/amazon'
+        }, {
+          src: rakaposhi,
+          routeUrl: '/place/natural/rakaposhi'
+        }, {
+          src: hawaii,
+          routeUrl: '/place/natural/hawaii'
+        }
+      ]
     };
   }
-
-  _onClick = (index) => {
-    this.setState({
-      index: index
-    });
-  };
-
+  
   render() {
-    return null
-  }
-};
-
-// defining StyleSheet
-// const styles = StyleSheet.create({
-//   panel: {
-//     width: 400,
-//     height: 300,
-//     backgroundColor: 'red',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     padding: 20,
-//     transform: [
-//       {translate: [0, 0, -4]}
-//     ]
-//   }
-// });
+    return ( 
+        <MainPanel 
+            isHomePage={false}
+            images={this.state.images}
+            history={this.props.history}
+        />
+    )
+  };
+}
