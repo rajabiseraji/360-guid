@@ -8,7 +8,7 @@
 'use strict';
 
 import React from 'react';
-import { StyleSheet, VrButton, Image, Text } from 'react-360';
+import { StyleSheet, VrButton, Image, Text, View } from 'react-360';
 
 export default class ButtonGroup extends React.Component {
     static defaultProps = {

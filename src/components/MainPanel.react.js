@@ -58,8 +58,10 @@ export default class MainPanel extends React.Component {
                     styles.mainPanel,
                     {
                         justifyContent: 'flex-start',
-                        marginleft: 300,
+                        marginLeft: 300,
                         height: 500,
+                        zIndex: 10,
+                        position: 'absolute',
                         transform: [{
                             translate: [0, 0, -400]
                         }]
@@ -165,6 +167,7 @@ export default class MainPanel extends React.Component {
             ]
         }>
             {!this.state.showHelp ? this._renderPageImages() : this._renderHelp()}
+            {this._renderModeSelector()}
             <View style = {
                 styles.miscPanel
             }>

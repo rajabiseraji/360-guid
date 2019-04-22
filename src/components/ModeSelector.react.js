@@ -8,7 +8,7 @@
 'use strict';
 
 import React from 'react';
-import { View, Text, StyleSheet, Image, asset } from 'react-360';
+import { View, Text, StyleSheet, VrButton, asset } from 'react-360';
 
 import ButtonGroup from 'ButtonGroup.react';
 import MiscButton from 'MiscButton.react';
@@ -131,7 +131,6 @@ const styles = StyleSheet.create({
         flex: 1, 
         flexDirection: 'column',
         alignItems: 'center',
-        color: 'white'
     },
     title: {
         color: 'white',
@@ -150,6 +149,9 @@ const styles = StyleSheet.create({
     applyButton: {
         backgroundColor: '#8ee3b2',
         borderRadius: 5,
+        justifyContent: 'center'
+    },
+    buttonText: {
         textAlign: 'center'
     }
 })
