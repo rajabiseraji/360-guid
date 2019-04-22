@@ -16,6 +16,7 @@ import Home from './src/components/MainPage.react';
 import Historical from './src/components/HistoricalPage.react';
 import Natural from './src/components/NaturalPage.react';
 import Adventure from './src/components/AdventurePage.react';
+import PlacePage from './src/components/PlacePage.react';
 // import ForwardPanel from './ForwardPanel';
 // import RightPanel from './RightPanel';
 // import RearPanel from './RearPanel';
@@ -31,6 +32,7 @@ const App = () => (
       <Route path="/natural" component={Natural} />
       <Route path="/historical" component={Historical} />
       <Route path="/adventure" component={Adventure} />
+      <Route path="/place/:category/:name" component={Place} />
     </View>
   </NativeRouter>
 );
