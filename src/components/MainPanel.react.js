@@ -25,18 +25,26 @@ const backIcon = asset('back.png');
 export default class MainPanel extends React.Component {
     static defaultProps = {
         isHomePage: false,  
+        hasOptions: false,
         images: []
     }
   constructor(props) {
     super(props);
     this.state = {
-      showHelp: false
+      showHelp: false,
+      showSetting: false
     };
   }
   
   _onClick = () => {
     this.setState({
       showHelp: !this.state.showHelp
+    });
+  };
+
+  _onClickSetting = () => {
+    this.setState({
+      showSetting: !this.state.showSetting
     });
   };
 
@@ -87,6 +95,14 @@ export default class MainPanel extends React.Component {
                         style = {styles.backButton}
                         source = {backIcon}
                         onClick = { () => {this.props.history.go(-1)}}
+                    /> : null
+                }
+                {
+                    this.props.hasOptions ? 
+                    <MiscButton
+                        style = {styles.optionsButton}
+                        source = {asset('setting.png')}
+                        onClick = {this._onClickSetting}}
                     /> : null
                 }
             </View>
@@ -181,6 +197,11 @@ const styles = StyleSheet.create({
   button: {
       marginRight: 100,
       marginLeft: 100
+  },
+  backButton: {
+    position: 'absolute',
+    top: '50%',
+    left: 0,
   },
   helpText: {
     height: '100%',
