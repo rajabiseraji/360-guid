@@ -1,44 +1,24 @@
 import React from 'react';
-import {
-  Environment,
-  StyleSheet,
-  View,
-  asset
-} from 'react-360';
+import { asset, Environment } from 'react-360';
 
-// import MainPageButton from 'MainPageButton.react';
+import MainPanel from 'MainPanel.react';
 
-export default class AdventurePage extends React.Component {
+export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
     Environment.setBackgroundImage(asset('adventurebg.jpg'));
     this.state = {
-      index: 0
+      images: []
     };
   }
-
-  _onClick = (index) => {
-    this.setState({
-      index: index
-    });
-  };
-
+  
   render() {
-    return null
-  }
-};
-
-// defining StyleSheet
-// const styles = StyleSheet.create({
-//   panel: {
-//     width: 400,
-//     height: 300,
-//     backgroundColor: 'red',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     padding: 20,
-//     transform: [
-//       {translate: [0, 0, -4]}
-//     ]
-//   }
-// });
+    return ( 
+        <MainPanel 
+            isHomePage={true}
+            images={this.state.images}
+            history={this.props.history}
+        />
+    )
+  };
+}
