@@ -1,4 +1,8 @@
 import React from 'react';
+import { View, Text, StyleSheet, Image, asset } from 'react-360';
+
+import ButtonGroup from 'ButtonGroup.react';
+import MiscButton from 'MiscButton.react';
 
 export default class ModeSelector extends React.Component {
     static defaultProps = {
@@ -11,19 +15,54 @@ export default class ModeSelector extends React.Component {
         super(props);
         this.state = {
             weather: 'sunny',
-            timeOfDay: 'day'
+            timeOfDay: 'day',
+            timeOfDayOptions: [
+                {
+                    isActive: true,
+                    imgSrc: asset('/mode/sun.png'),
+                    text: 'Day Time'
+                },
+                {
+                    isActive: false,
+                    imgSrc: asset('/mode/moon.png'),
+                    text: 'Night Time'
+                },
+            ],
+            weatherOptions: [
+                {
+                    isActive: true,
+                    imgSrc: asset('/mode/sun.png'),
+                    text: 'Clear'
+                },
+                {
+                    isActive: false,
+                    imgSrc: asset('/mode/snow.png'),
+                    text: 'Snowy'
+                },
+                {
+                    isActive: false,
+                    imgSrc: asset('/mode/rain.png'),
+                    text: 'Rainy'
+                },
+            ]
         }
     }
 
-    _onWeatherChange(newWeather) {
+    _onWeatherChange(newWeatherIndex) {
+        let newWeatherOptions = Object.assign({}, this.state.weatherOptions);
+        newWeatherOptions = newWeatherOptions.map((option, index) => ({...option, isActive: newWeatherIndex === index}));
         this.setState({
-            weather: newWeather
+            weather: this.state.weatherOptions[newWeatherIndex],
+            weatherOptions: newWeatherOptions
         })
     }
 
-    _onTimeOfDayChange(newTimeOfDay) {
+    _onTimeOfDayChange(newTimeOfDayIndex) {
+        let newTimeOfDayOptions = Object.assign({}, this.state.timeOfDayOptions);
+        newTimeOfDayOptions = newTimeOfDayOptions.map((option, index) => ({...option, isActive: newTimeOfDayIndex === index}));
         this.setState({
-            timeOfDay: newTimeOfDay
+            timeOfDay: this.state.timeOfDayOptions[newTimeOfDayIndex],
+            timeOfDayOptions: newTimeOfDayOptions
         })
     }
 
@@ -36,7 +75,47 @@ export default class ModeSelector extends React.Component {
 
     render() {
         return (
-
+            <View style={styles.card}>
+                <Text style={styles.title}>Change the Mode</Text>
+                <View style={styles.timeRow}>
+                    <Text style={styles.title}>Time</Text>
+                    <ButtonGroup 
+                        options={this.state.timeOfDayOptions}
+                        onOptionChange={this._onTimeOfDayChange}
+                    />
+                </View>
+                <View style={styles.timeRow}>
+                    <Text style={styles.title}>Time</Text>
+                    <ButtonGroup 
+                        options={this.state.weatherOptions}
+                        onOptionChange={this._onWeatherChange}
+                    />
+                </View>
+            </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    card: {
+        backgroundColor: '#363636',
+        borderRadius: 10,
+        height: 400,
+        padding: 20,
+        width: 800,
+        flex: 1, 
+        flexDirection: 'column',
+        alignItems: 'center',
+        color: 'white'
+    },
+    title: {
+        color: 'white',
+        fontSize: 20
+    },
+    timeRow: {
+        flex: 1, 
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginBottom: 10
+    }
+})
