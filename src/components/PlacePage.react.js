@@ -6,9 +6,8 @@ import MainPanel from 'MainPanel.react';
 export default class PlacePage extends React.Component {
   constructor(props) {
     super(props);
-    const name = {props};
-    const category = {props};
-    Environment.setBackgroundImage(asset(`/${category}/${name}`));
+    const {name, category} = props.match.params;
+    Environment.setBackgroundImage(asset(`/${category}/${name}/day.jpg`));
   }
   
   render() {
@@ -16,7 +15,7 @@ export default class PlacePage extends React.Component {
         <MainPanel 
             isHomePage={false}
             hasOptions={true}
-            images={this.state.images}
+            images={[]}
             history={this.props.history}
         />
     )

@@ -29,7 +29,7 @@ export default class HistoricalPage extends React.Component {
   render() {
     return ( 
         <MainPanel 
-            isHomePage={true}
+            isHomePage={false}
             images={this.state.images}
             history={this.props.history}
         />

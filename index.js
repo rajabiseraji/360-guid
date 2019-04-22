@@ -32,7 +32,7 @@ const App = () => (
       <Route path="/natural" component={Natural} />
       <Route path="/historical" component={Historical} />
       <Route path="/adventure" component={Adventure} />
-      <Route path="/place/:category/:name" component={Place} />
+      <Route path="/place/:category/:name" component={PlacePage} />
     </View>
   </NativeRouter>
 );

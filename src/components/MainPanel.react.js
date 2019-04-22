@@ -75,12 +75,22 @@ export default class MainPanel extends React.Component {
 
   _renderPageImages = () => {
         return (
-            <View style = {styles.mainPanel}>
+            <View style = {
+                [
+                    styles.mainPanel,
+                    {
+                        height: this.props.isHomePage ? 300 : 400
+                    }
+                ]
+            }>
                 {
                     this.props.images.map((image) => 
                         (<MainPageButton
-                            style = {styles.button}
+                            style = {
+                                styles.button
+                            }
                             source = {image.src}
+                            key={image.routeUrl}
                             onClick = {
                                 () => {
                                     this.props.history.push(image.routeUrl);    
@@ -102,7 +112,7 @@ export default class MainPanel extends React.Component {
                     <MiscButton
                         style = {styles.optionsButton}
                         source = {asset('setting.png')}
-                        onClick = {this._onClickSetting}}
+                        onClick = {this._onClickSetting}
                     /> : null
                 }
             </View>
@@ -115,7 +125,7 @@ export default class MainPanel extends React.Component {
             [
                 styles.panel,
                 {
-                    flexDirection: !this.state.showHelp ? 'column' : 'row'
+                    flexDirection: !this.state.showHelp ? 'column' : 'row',
                 }
 
             ]
@@ -189,6 +199,9 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
   },
+  optionsButton: {
+      height: '30%'
+  },
   noTransform: {
     transform: [
       {translate: [0, 0, 0]}
@@ -201,6 +214,7 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     top: '50%',
+    height: 150,
     left: 0,
   },
   helpText: {
