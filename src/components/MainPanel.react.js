@@ -12,7 +12,8 @@ import {
     StyleSheet,
     View,
     asset,
-    Image
+    Image,
+    VrButton
 } from 'react-360';
 
 import MiscButton from 'MiscButton.react';
@@ -55,6 +56,26 @@ export default class MainPanel extends React.Component {
         showSetting: false
       });
       this.props.onChangeMode(newMode);
+  }
+
+  _goToRandomRoute = () => {
+      /**
+       * This is quite lazy coding but since we're not using a 
+       * dynamic application, it's fine to declare an array of our places 
+       * here in this function
+       */
+      const places = [
+          'adventure/skydiving',
+          'natural/amazon',
+          'natural/hawaii',
+          'natural/rakaposhi',
+          'historical/eiffel',
+          'historical/sphinx',
+          'historical/tajmahal'
+      ];
+      const randomPlace = places[Math.floor(Math.random() * places.length)];
+      const randomRoute = `/place/${randomPlace}`;
+      this.props.history.push(randomRoute);
   }
 
   _renderModeSelector = () => {
@@ -180,12 +201,14 @@ export default class MainPanel extends React.Component {
             }>
                 {
                     this.props.isHomePage ? 
-                    <Image
-                        style={styles.confused} 
-                        source = {
-                            asset('confused.png')
-                        }
-                    /> : null
+                    <VrButton onClick={this._goToRandomRoute}>
+                        <Image
+                            style={styles.confused} 
+                            source = {
+                                asset('confused.png')
+                            }
+                        />
+                    </VrButton> : null
                 }
                 <MiscButton
                     style = {styles.miscButton}
