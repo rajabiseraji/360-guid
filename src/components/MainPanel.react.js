@@ -160,6 +160,7 @@ export default class MainPanel extends React.Component {
                     zIndex: 100,
                     justifyContent: 'center',
                     height: 500,
+                    width: 600,
                     transform: [{
                         translate: [0, 0, -200]
                     }]
@@ -168,7 +169,7 @@ export default class MainPanel extends React.Component {
         }>
             <View style={styles.card}>
                 <Text style={styles.title}>
-                    {`we're going to ${this.state.nextPlace}`}
+                    {`Going to ${this.state.nextPlace}`}
                 </Text>
             </View>  
         </View>
@@ -267,9 +268,10 @@ export default class MainPanel extends React.Component {
 // defining StyleSheet
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: '#363636',
-        opacity: 0.7,
+        backgroundColor: 'white',
         borderRadius: 10,
+        borderWidth: 5,
+        borderColor: 'gray',
         height: 200,
         width: 400,
         padding: 20,
@@ -280,7 +282,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     title: {
-        color: 'white',
+        color: '#363636',
+        textAlign: 'center',
         fontSize: 40
     },
   panel: {
