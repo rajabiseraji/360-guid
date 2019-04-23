@@ -13,7 +13,8 @@ import {
     View,
     asset,
     Image,
-    VrButton
+    VrButton,
+    Text
 } from 'react-360';
 
 import MiscButton from 'MiscButton.react';
@@ -35,7 +36,9 @@ export default class MainPanel extends React.Component {
     super(props);
     this.state = {
       showHelp: false,
-      showSetting: false
+      showSetting: false,
+      showTransitionImage: false,
+      nextPlace: ''
     };
   }
   
@@ -50,6 +53,16 @@ export default class MainPanel extends React.Component {
       showSetting: !this.state.showSetting
     });
   };
+
+  _onImageClick = (route, name) => {
+      this.setState({
+          nextPlace: name,
+          showTransitionImage: true
+      });
+      setTimeout(() => {
+          this.props.history.push(route);
+      }, 3000);
+  }
 
   _changeModeHandler = (newMode) => {
       this.setState({
@@ -137,6 +150,31 @@ export default class MainPanel extends React.Component {
       )
   }
 
+  _renderTransitionMessage = () => {
+      return (
+        <View style={
+            [
+                styles.mainPanel,
+                {
+                    position: 'absolute',
+                    zIndex: 100,
+                    justifyContent: 'center',
+                    height: 500,
+                    transform: [{
+                        translate: [0, 0, -200]
+                    }]
+                }
+            ]
+        }>
+            <View style={styles.card}>
+                <Text style={styles.title}>
+                    {`we're going to ${this.state.nextPlace}`}
+                </Text>
+            </View>  
+        </View>
+      )
+  }
+
   _renderPageImages = () => {
         return (
             <View style = {
@@ -155,11 +193,7 @@ export default class MainPanel extends React.Component {
                             }
                             source = {image.src}
                             key={image.routeUrl}
-                            onClick = {
-                                () => {
-                                    this.props.history.push(image.routeUrl);    
-                                }
-                            } 
+                            onClick = {() => this._onImageClick(image.routeUrl, image.name)} 
                         />)
                     )
                 }
@@ -195,6 +229,7 @@ export default class MainPanel extends React.Component {
             ]
         }>
             {!this.state.showHelp ? this._renderPageImages() : this._renderHelp()}
+            {this.state.showTransitionImage ? this._renderTransitionMessage() : null}
             {this._renderModeSelector()}
             <View style = {
                 styles.miscPanel
@@ -231,6 +266,23 @@ export default class MainPanel extends React.Component {
 
 // defining StyleSheet
 const styles = StyleSheet.create({
+    card: {
+        backgroundColor: '#363636',
+        opacity: 0.7,
+        borderRadius: 10,
+        height: 200,
+        width: 400,
+        padding: 20,
+        width: 800,
+        flex: 1, 
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    title: {
+        color: 'white',
+        fontSize: 40
+    },
   panel: {
     flex: 1,
     flexDirection: 'row',

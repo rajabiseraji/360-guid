@@ -11,7 +11,8 @@ export default class AdventurePage extends React.Component {
       images: [
         {
           src: skydiving,
-          routeUrl: '/place/adventure/skydiving'
+          routeUrl: '/place/adventure/skydiving',
+          name: 'Skydiving'
         }
       ]
     };
