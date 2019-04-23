@@ -14,13 +14,16 @@ export default class NaturalPage extends React.Component {
       images: [
         {
           src: amazon,
-          routeUrl: '/place/natural/amazon'
+          routeUrl: '/place/natural/amazon',
+          name: 'Amazon Jungle'
         }, {
           src: rakaposhi,
-          routeUrl: '/place/natural/rakaposhi'
+          routeUrl: '/place/natural/rakaposhi',
+          name: 'Rakaposhi Mountain'
         }, {
           src: hawaii,
-          routeUrl: '/place/natural/hawaii'
+          routeUrl: '/place/natural/hawaii',
+          name: 'Hawaii Beach'
         }
       ]
     };

@@ -14,15 +14,18 @@ export default class MainPage extends React.Component {
       images: [
           {
               src: adventureImage,
-              routeUrl: '/adventure'
+              routeUrl: '/adventure',
+              name: 'Adventure Sports Section'
           },
           {
               src: naturalImage,
-              routeUrl: '/natural'
+              routeUrl: '/natural',
+              name: 'Natural Landscapes Section'
           },
           {
               src: historicalImage,
-              routeUrl: '/historical'
+              routeUrl: '/historical',
+              name: 'Historical Monuments Section'
           }
       ]
     };

@@ -14,13 +14,16 @@ export default class HistoricalPage extends React.Component {
       images: [
         {
           src: eiffel,
-          routeUrl: '/place/historical/eiffel'
+          routeUrl: '/place/historical/eiffel',
+          name: 'Eiffel Tower'
         }, {
           src: tajmahal,
-          routeUrl: '/place/historical/tajmahal'
+          routeUrl: '/place/historical/tajmahal',
+          name: 'Taj Mahal'
         }, {
           src: sphinx,
-          routeUrl: '/place/historical/sphinx'
+          routeUrl: '/place/historical/sphinx',
+          name: 'The Great Sphinx'
         }
       ]
     };
