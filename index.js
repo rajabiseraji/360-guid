@@ -17,13 +17,7 @@ import Historical from './src/components/HistoricalPage.react';
 import Natural from './src/components/NaturalPage.react';
 import Adventure from './src/components/AdventurePage.react';
 import PlacePage from './src/components/PlacePage.react';
-// import ForwardPanel from './ForwardPanel';
-// import RightPanel from './RightPanel';
-// import RearPanel from './RearPanel';
-
-// AppRegistry.registerComponent('ForwardPanel', () => ForwardPanel);
-// AppRegistry.registerComponent('RightPanel', () => RightPanel);
-// AppRegistry.registerComponent('RearPanel', () => RearPanel);
+import TransitionContainer from './src/components/TransitionContainer.react';
 
 const App = () => (
   <NativeRouter>
@@ -46,4 +40,5 @@ const styles = StyleSheet.create({
 
 // register the root component
 // this will be used from client.js by r360.createRoot('BasicAppTemplate' ...)
+AppRegistry.registerComponent('TransitionContainer', () => TransitionContainer);
 AppRegistry.registerComponent('App', () => App);

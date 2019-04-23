@@ -20,6 +20,7 @@ import {
 import MiscButton from 'MiscButton.react';
 import MainPageButton from 'MainPageButton.react';
 import ModeSelector from 'ModeSelector.react';
+import TransitionContainer from 'TransitionContainer.react';
 
 
 const questionIcon = asset('help.png');
@@ -61,7 +62,7 @@ export default class MainPanel extends React.Component {
       });
       setTimeout(() => {
           this.props.history.push(route);
-      }, 3000);
+      }, 1000);
   }
 
   _changeModeHandler = (newMode) => {
@@ -150,32 +151,6 @@ export default class MainPanel extends React.Component {
       )
   }
 
-  _renderTransitionMessage = () => {
-      return (
-        <View style={
-            [
-                styles.mainPanel,
-                {
-                    position: 'absolute',
-                    zIndex: 100,
-                    justifyContent: 'center',
-                    height: 500,
-                    width: 600,
-                    transform: [{
-                        translate: [0, 0, -200]
-                    }]
-                }
-            ]
-        }>
-            <View style={styles.card}>
-                <Text style={styles.title}>
-                    {`Going to ${this.state.nextPlace}`}
-                </Text>
-            </View>  
-        </View>
-      )
-  }
-
   _renderPageImages = () => {
         return (
             <View style = {
@@ -230,7 +205,7 @@ export default class MainPanel extends React.Component {
             ]
         }>
             {!this.state.showHelp ? this._renderPageImages() : this._renderHelp()}
-            {this.state.showTransitionImage ? this._renderTransitionMessage() : null}
+            {this.state.showTransitionImage ? <TransitionContainer nextPlace={this.state.nextPlace} /> : null}
             {this._renderModeSelector()}
             <View style = {
                 styles.miscPanel
@@ -267,25 +242,6 @@ export default class MainPanel extends React.Component {
 
 // defining StyleSheet
 const styles = StyleSheet.create({
-    card: {
-        backgroundColor: 'white',
-        borderRadius: 10,
-        borderWidth: 5,
-        borderColor: 'gray',
-        height: 200,
-        width: 400,
-        padding: 20,
-        width: 800,
-        flex: 1, 
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    title: {
-        color: '#363636',
-        textAlign: 'center',
-        fontSize: 40
-    },
   panel: {
     flex: 1,
     flexDirection: 'row',
