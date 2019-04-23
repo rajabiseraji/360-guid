@@ -2,13 +2,18 @@ import React from 'react';
 import { asset, Environment } from 'react-360';
 
 import MainPanel from 'MainPanel.react';
-
+const skydiving = asset('/adventure/skydiving/card.png');
 export default class AdventurePage extends React.Component {
   constructor(props) {
     super(props);
     Environment.setBackgroundImage(asset('adventurebg.jpg'));
     this.state = {
-      images: []
+      images: [
+        {
+          src: skydiving,
+          routeUrl: '/place/adventure/skydiving'
+        }
+      ]
     };
   }
   
