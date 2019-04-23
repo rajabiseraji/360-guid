@@ -31,7 +31,7 @@ export default class PlacePage extends React.Component {
     return ( 
         <MainPanel 
             isHomePage={false}
-            hasOptions={true}
+            hasOptions={this.props.match.params.category === 'historical'}
             images={[]}
             history={this.props.history}
             onChangeMode={this._changeMode}
